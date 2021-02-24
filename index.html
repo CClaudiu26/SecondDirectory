@@ -1,0 +1,687 @@
+
+
+<!DOCTYPE html>
+
+
+
+<html lang = "en">
+    <head>
+        <meta charset= "utf-8" >
+
+		<title>Company Directory</title>
+	
+        <meta name = "author" content = "Claudiu Cozma" >
+        <meta name = "viewport" content = "width = device-width" initial-scale = 1.0 maximum-scale=1.0  user-scalable=no>
+
+        <link rel="stylesheet" href="style/style.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+
+    </head>
+
+    <body>
+
+
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+    <div class = "nav ">
+   
+      <div class="input-group mb-3" style = "width: 70%; margin-top:5px; margin-left:20px;">
+       
+        <input type="text" id = "search" class="form-control" placeholder="Search Employee" >
+      </div>
+    
+      <div class = "nav_content">
+
+    
+        
+  
+
+   <a href = "#myModal" role="button" data-toggle="modal"> <img
+    class = "nav_avatar"
+     src = " https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png" alt = " "/> </a>
+
+
+     <a href = "#locationmodal" role="button" data-toggle="modal"> <img
+    class = "nav_loc"
+     src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTulBTOzi8bpEmgmuk_04gAvzJp3BuGQelHXA&usqp=CAU" alt = " "/> </a>
+
+      </div>
+
+
+      </div>
+
+ 
+
+
+
+
+
+    <header class = "banner" >
+
+    
+    
+     
+
+
+    </header>
+	
+
+    
+  
+
+
+   
+    
+      <div id="myModal" class="modal fade" tabindex="-1">
+          <div class="modal-dialog" >
+              <div class="modal-content" style = "color:white; background-color: #000;">
+                  <div class="modal-header" >
+                      <h5 class="modal-title">ADD A NEW EMPLOYEE</h5>
+                      <button type="button" class="close" data-dismiss="modal" style = "color:white;">&times;</button>
+                  </div>
+                  <div class="modal-body" >
+                    
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>First Name</label>
+                                  <input id = "firstnameinsert" type="text" class="form-control" required />
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Last Name</label>
+                                  <input id = "lastnameinsert" type="text" class="form-control" required />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="form-group">
+                                  <label>Email</label>
+                                  <input id = "emailinsert" type="email" class="form-control" required />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="form-group">
+                                  <label>Department</label>
+                                  <select  class = "form-control" id="Search" name = "Search" required>
+                                    <option value = "">Choose Department</option>
+                                    
+                                   
+                               
+                
+                                   </select>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                      <button type="button" id = "insert"  data-dismiss="modal" class="btn btn-primary">ADD EMPLOYEE</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+      <div id="locationmodal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog" >
+            <div class="modal-content" style = "color:white; background-color: #000;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change Department Location</h5>
+                    <button type="button" class="close" data-dismiss="modal" style = "color:white;">&times;</button>
+                </div>
+                <div class="modal-body">
+                 
+                
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select  class = "form-control" id="departmentchange"  onchange="changelocation();" >
+                                  <option>Choose Department</option>
+                                  
+                                 
+                             
+              
+                                 </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-12">
+                          <div class="form-group">
+                              <label>Department</label>
+                              <select  class = "form-control" id="newlocation" >
+                                <option>New Location</option>
+                                
+                               
+                           
+            
+                               </select>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                    <button type="button" id = "change" data-dismiss="modal" class="btn btn-primary">CHANGE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+
+
+
+    <div id="profilemodal" class="modal fade" tabindex="-1">
+      <div class="modal-dialog">
+          <div class="modal-content" style = "color:white; background-color: #000;">
+              <div class="modal-header">
+                  <h5 class="modal-title">EDIT EMPLOYEE</h5>
+                  <button type="button" class="close" data-dismiss="modal" style = "color:white;">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      
+                      <div class="col-6">
+                          <div class="form-group">
+                              <label>Last Name</label>
+                              <input id = "lastnameprofile" type="text" class="form-control">
+                          </div>
+                      </div>
+
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input id = "firstnameprofile" type="text" class="form-control">
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="form-group">
+                              <label>Email</label>
+                              <input id = "emailprofile" type="email" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="form-group">
+                              <label>Department</label>
+                              <input id = "departmentprofile" type="text" class="form-control">
+                           
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" id = "delete" data-dismiss="modal">DELETE</button>
+                  <button type="button" id = "save" data-dismiss="modal" class="btn btn-primary">EDIT</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+    
+   
+
+
+    
+
+      
+
+
+         
+            
+            <table  class = "container" id = "mytable" cellspacing="0">
+            <thead>
+              <tr >
+             
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Email</th>
+                  <th width="300">Department</th>
+               </tr>
+
+               </thead>
+               
+               <tbody id = "example" style = "color: white;">
+            
+              
+            
+               </tbody>
+             
+          
+             </table>
+ 
+            
+          
+         
+ 
+          <script type="application/javascript" src="libs/javascript/jquery-3.5.1.min.js"></script>
+          <script src = "https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+          <script src="https://kit.fontawesome.com/e0ff10d76d.js" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+          <script type="application/javascript" src="libs/javascript/js.js"></script>
+
+          <script>
+
+
+            
+
+
+
+$.ajax({
+        url: "libs/getAll.php",
+        type: 'POST',
+       
+        dataType: 'json',
+        data: {
+                
+        },
+     
+        
+      
+        success: function(result){
+
+            console.log(result.data);
+            var rows;
+          for (i=0;i < result.data.length ; i++){
+
+            var lastname = result.data[i].lastName ;
+            var firstname = result.data[i].firstName;
+            var email = result.data[i].email ;
+            var department = result.data[i].department ;
+
+           var id = result.data[i].id;
+         
+            rows += "<tr class = 'click-row'  data-toggle='modal' data-target='#profilemodal'>"
+                  + "<td>" + lastname + "</td>"
+                  + "<td>" + firstname + "</td>"
+                  + "<td>" + email + "</td>"
+                  + "<td>" + department + "</td>"
+                  + "<td id = 'idprofile'>" + id + "</td>"
+                 
+             + "</tr>";
+
+           
+            
+            
+
+
+       
+
+          }
+
+          $('#mytable tbody').append(rows);
+         
+        }
+
+
+
+    });
+
+
+
+
+
+ 
+
+
+
+    $.ajax({
+            url:'libs/getAllDepartments.php',
+            type:'POST',
+            
+            dataType: 'json',
+            success: function( result ) {
+              console.log(result)
+                for (i=0;i< result.data.length; i++)
+                    $('#Search').append($('<option>').text(result.data[i].name).attr('value',result.data[i].name ));
+              
+            }
+        });
+
+        $.ajax({
+            url:'libs/getAllDepartments.php',
+            type:'POST',
+            
+            dataType: 'json',
+            success: function( result ) {
+              console.log(result)
+                for (i=0;i< result.data.length; i++)
+                    $('#departmentchange').append($('<option>').text(result.data[i].name).attr('value',result.data[i].name ));
+              
+            }
+        });
+
+
+        $.ajax({
+            url:'libs/selectlocation.php',
+            type:'POST',
+            
+            dataType: 'json',
+            success: function( result ) {
+              console.log(result)
+                for (i=0;i< result.data.length; i++)
+                    $('#newlocation').append($('<option>').text(result.data[i].name).attr('value',result.data[i].name ));
+              
+            }
+        });
+
+
+        $('#insert').click(function() {
+
+$.ajax({
+    url: "libs/insert.php",
+    type: 'POST',
+    dataType: 'json',
+    data:{
+        lastname : $("#lastnameinsert").val(),
+        firstname: $("#firstnameinsert").val(),
+        email : $("#emailinsert").val(),
+     
+        department : $("#Search").val(),
+    
+        
+    },
+    
+  
+    success: function(result){
+
+        console.log(result.status.code);
+
+        if (result.status.code == '404'){
+
+          alert("ERROR ON INSERTING DATA");
+
+        }else{
+
+        alert ("DATA INSERTED");
+
+        var id; 
+
+
+        $.ajax({
+          url: "libs/getid.php",
+          type: 'POST',
+          dataType: 'json',
+          async:false,
+          data: {
+
+          },
+
+          success: function(result){
+      
+              id = result.data[0].idm;
+              console.log(id);
+
+
+
+              
+             
+          },
+
+        
+
+  
+        });
+
+
+
+      
+      var rows;
+   
+        rows += "<tr class = 'click-row'  data-toggle='modal' data-target='#profilemodal'>"
+                  + "<td>" + $("#lastnameinsert").val() + "</td>"
+                  + "<td>" + $("#firstnameinsert").val() + "</td>"
+                  + "<td>" + $("#emailinsert").val() + "</td>"
+                  + "<td>" + $("#Search").val() + "</td>"
+                  + "<td id = 'idprofile'>" + id + "</td>"
+
+          
+                 
+             + "</tr>";
+            
+
+             $('#mytable tbody').append(rows);
+
+
+             $("#lastnameinsert").val("");
+        $("#firstnameinsert").val("");
+        $("#emailinsert").val("");
+        $("#Search").val("Choose Department");
+        }
+    }
+
+});
+});
+
+
+const  changelocation = () => {
+
+$.ajax ({
+    url: "libs/getlocation.php",
+    type: 'POST',
+    dataType: 'json',
+    data:{
+       dep: $('#departmentchange').val(),
+    },
+
+    success: function(result){
+        console.log(result);
+
+        alert("Actual Location for this Department is " + result.data[0].location);
+        
+            
+    }
+
+
+});
+
+
+
+};
+
+
+$('#change').click(function() {
+        $.ajax({
+
+            url: "libs/updateloc.php",
+            type: 'POST',
+            dataType: 'json',
+            data:{
+               loc: $("#newlocation").val(),
+               dep: $("#departmentchange").val()
+               
+            },
+
+            success: function(result){
+                console.log(result);
+
+                $("#departmentchange").val("Choose Department");
+                $("#newlocation").val("New Location")
+                
+                
+  
+                
+                    
+            }
+            
+        })
+    });
+
+
+    $(document).on("click", "#mytable tbody tr", function () {
+
+      var row = $(this).closest("tr"),        
+    tds = row.find("td:nth-child(1)");
+
+    $.each(tds, function() {               
+      $(".modal-body #lastnameprofile").val($(this).text());         
+});
+
+var row = $(this).closest("tr"),        
+    tds = row.find("td:nth-child(2)");
+
+    $.each(tds, function() {               
+      $(".modal-body #firstnameprofile").val($(this).text());         
+});
+
+var row = $(this).closest("tr"),        
+    tds = row.find("td:nth-child(3)");
+
+    $.each(tds, function() {               
+      $(".modal-body #emailprofile").val($(this).text());         
+});
+
+var row = $(this).closest("tr"),        
+    tds = row.find("td:nth-child(4)");
+
+    $.each(tds, function() {               
+      $(".modal-body #departmentprofile").val($(this).text());         
+});
+
+var getid; 
+
+var row = $(this).closest("tr"),        
+    tds = row.find("td:nth-child(5)");
+
+    $.each(tds, function() {               
+      getid = $(this).text();        
+});
+
+$('#save').click(function() {
+
+
+
+
+$.ajax({
+    url: "libs/update.php",
+    type: 'POST',
+    dataType: 'json',
+    data:{
+        lastname : $("#lastnameprofile").val(),
+        firstname: $("#firstnameprofile").val(),
+        email : $("#emailprofile").val(),
+     
+        department : $("#departmentprofile").val(),
+        id: getid
+        
+    },
+    
+  
+    success: function(result){
+
+        console.log(result.status.code);
+
+        tds1 = row.find("td:nth-child(1)");
+        tds2 = row.find("td:nth-child(2)");
+        tds3 = row.find("td:nth-child(3)");
+        tds4 = row.find("td:nth-child(4)");
+
+        tds1.html($("#lastnameprofile").val());
+        tds2.html($("#firstnameprofile").val());
+        tds3.html($("#emailprofile").val());
+        tds4.html($("#departmentprofile").val());
+
+
+        
+        
+        
+            
+    }
+
+});
+});
+
+$('#delete').click(function() {
+
+
+
+
+$.ajax({
+    url: "libs/deleteprofile.php",
+    type: 'POST',
+    dataType: 'json',
+    data:{
+      
+        id: getid
+        
+    },
+    
+  
+    success: function(result){
+
+        console.log(result.status.code);
+        row.fadeTo("slow",0.7, function(){
+            $(this).remove();
+        });
+        
+        
+        
+            
+    }
+
+});
+});
+
+   
+
+  
+});
+
+
+    
+
+
+$("#search").keyup(function () {
+    var value = this.value.toLowerCase().trim();
+
+    $("table tr").each(function (index) {
+        if (!index) return;
+        $(this).find("td").each(function () {
+            var id = $(this).text().toLowerCase().trim();
+            var not_found = (id.indexOf(value) == -1);
+            $(this).closest('tr').toggle(!not_found);
+            return not_found;
+        });
+    });
+});
+
+
+
+
+            </script>
+
+ 
+     </body>
+ </html>
+
+
+
+
+
+
